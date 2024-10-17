@@ -48,7 +48,6 @@ const ProfileBox = () => {
                   />
                 </svg>
               </span>
-              <span>Edit</span>
             </label>
           </div>
         </div>
@@ -56,7 +55,7 @@ const ProfileBox = () => {
           <div className="relative z-30 mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-[176px] sm:p-3">
             <div className="relative drop-shadow-2">
               <Image
-                src="/images/user/user-03.png"
+                src="/images/logo/logo-kemenkeu.png"
                 width={160}
                 height={160}
                 className="overflow-hidden rounded-full"
@@ -95,27 +94,15 @@ const ProfileBox = () => {
           </div>
           <div className="mt-4">
             <h3 className="mb-1 text-heading-6 font-bold text-dark dark:text-white">
-              Danish Heilium
+              Dhian Prameswari
             </h3>
-            <p className="font-medium">Ui/Ux Designer</p>
-            <div className="mx-auto mb-5.5 mt-5 grid max-w-[370px] grid-cols-3 rounded-[5px] border border-stroke py-[9px] shadow-1 dark:border-dark-3 dark:bg-dark-2 dark:shadow-card">
-              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-dark-3 xsm:flex-row">
+            <p className="font-medium">KANWIL SULUT</p>
+            <div className="mx-auto mb-5 mt-5 max-w-[370px] rounded-[5px] border border-stroke py-[9px] shadow-1 dark:border-dark-3 dark:bg-dark-2 dark:shadow-card">
+              <div className="flex flex-col items-center justify-center gap-2 border-r border-stroke px-4 dark:border-dark-3 xsm:flex-row">
                 <span className="font-medium text-dark dark:text-white">
-                  259
+                MANTAP
                 </span>
-                <span className="text-body-sm">Posts</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-1 border-r border-stroke px-4 dark:border-dark-3 xsm:flex-row">
-                <span className="font-medium text-dark dark:text-white">
-                  129K
-                </span>
-                <span className="text-body-sm">Followers</span>
-              </div>
-              <div className="flex flex-col items-center justify-center gap-1 px-4 xsm:flex-row">
-                <span className="font-medium text-dark dark:text-white">
-                  2K
-                </span>
-                <span className="text-body-sm-sm">Following</span>
+                <span className="text-body-sm">Modern, ANdal, Tepercaya, Akuntabel, dan Profesional</span>
               </div>
             </div>
 
@@ -124,21 +111,17 @@ const ProfileBox = () => {
                 About Me
               </h4>
               <p className="mt-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque posuere fermentum urna, eu condimentum mauris
-                tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus
-                ultricies. Sed vel aliquet libero. Nunc a augue fermentum,
-                pharetra ligula sed, aliquam lacus.
+                DJPb adalah singkatan dari Direktorat Jenderal Perbendaharaan, yang merupakan unit eselon I di bawah Kementerian Keuangan.
               </p>
             </div>
 
             <div className="mt-4.5">
               <h4 className="mb-3.5 font-medium text-dark dark:text-white">
-                Follow me on
+                Socials
               </h4>
               <div className="flex items-center justify-center gap-3.5">
                 <Link
-                  href="#"
+                  href="https://djpb.kemenkeu.go.id/kanwil/sulut/id/"
                   className="hover:text-primary"
                   aria-label="social-icon"
                 >
@@ -165,7 +148,7 @@ const ProfileBox = () => {
                 </Link>
 
                 <Link
-                  href="#"
+                  href="https://djpb.kemenkeu.go.id/kanwil/sulut/id/"
                   className="hover:text-primary"
                   aria-label="social-icon"
                 >
@@ -187,7 +170,7 @@ const ProfileBox = () => {
                 </Link>
 
                 <Link
-                  href="#"
+                  href="https://djpb.kemenkeu.go.id/kanwil/sulut/id/"
                   className="hover:text-primary"
                   aria-label="social-icon"
                 >
@@ -219,7 +202,7 @@ const ProfileBox = () => {
                 </Link>
 
                 <Link
-                  href="#"
+                  href="https://djpb.kemenkeu.go.id/kanwil/sulut/id/"
                   className="hover:text-primary"
                   aria-label="social-icon"
                 >
@@ -240,38 +223,6 @@ const ProfileBox = () => {
                     <defs>
                       <clipPath id="clip0_1676_1816">
                         <rect width="22" height="22" fill="white" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </Link>
-
-                <Link
-                  href="#"
-                  className="hover:text-primary"
-                  aria-label="social-icon"
-                >
-                  <svg
-                    className="fill-current"
-                    width="23"
-                    height="22"
-                    viewBox="0 0 23 22"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clipPath="url(#clip0_1676_1820)">
-                      <path
-                        d="M11.6657 1.8335C6.60111 1.8335 2.49902 5.93558 2.49902 11.0002C2.49799 12.9245 3.10294 14.8003 4.22806 16.3614C5.35318 17.9226 6.94133 19.0898 8.76719 19.6975C9.22553 19.7772 9.39694 19.5022 9.39694 19.2612C9.39694 19.0439 9.38503 18.3225 9.38503 17.5543C7.08236 17.9787 6.48653 16.9933 6.30319 16.4772C6.19961 16.2132 5.75319 15.4002 5.36361 15.182C5.04278 15.0106 4.58444 14.5862 5.35169 14.5752C6.07403 14.5632 6.58919 15.2397 6.76153 15.5147C7.58653 16.9007 8.90469 16.5112 9.43086 16.271C9.51153 15.6752 9.75169 15.2746 10.0157 15.0454C7.97611 14.8162 5.84486 14.0252 5.84486 10.5189C5.84486 9.52158 6.19961 8.6975 6.78444 8.05491C6.69278 7.82575 6.37194 6.88616 6.87611 5.62575C6.87611 5.62575 7.64336 5.38558 9.39694 6.56625C10.1432 6.35914 10.9142 6.25489 11.6886 6.25641C12.4678 6.25641 13.2469 6.35908 13.9803 6.56533C15.7329 5.37366 16.5011 5.62666 16.5011 5.62666C17.0053 6.88708 16.6844 7.82666 16.5928 8.05583C17.1767 8.6975 17.5324 9.51058 17.5324 10.5189C17.5324 14.0371 15.3901 14.8162 13.3505 15.0454C13.6824 15.3314 13.9693 15.8814 13.9693 16.7412C13.9693 17.9668 13.9574 18.9522 13.9574 19.2621C13.9574 19.5022 14.1297 19.7882 14.588 19.6966C16.4076 19.0822 17.9888 17.9127 19.1089 16.3527C20.2291 14.7927 20.8318 12.9207 20.8324 11.0002C20.8324 5.93558 16.7303 1.8335 11.6657 1.8335Z"
-                        fill=""
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_1676_1820">
-                        <rect
-                          width="22"
-                          height="22"
-                          fill="white"
-                          transform="translate(0.666016)"
-                        />
                       </clipPath>
                     </defs>
                   </svg>

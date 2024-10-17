@@ -17,7 +17,7 @@ const DropdownUser = () => {
           <Image
             width={112}
             height={112}
-            src="/images/user/user-03.png"
+            src="/images/logo/logo-kemenkeu.png"
             style={{
               width: "auto",
               height: "auto",
@@ -28,7 +28,7 @@ const DropdownUser = () => {
         </span>
 
         <span className="flex items-center gap-2 font-medium text-dark dark:text-dark-6">
-          <span className="hidden lg:block">Jhon Smith</span>
+          <span className="hidden lg:block">Kanwil</span>
 
           <svg
             className={`fill-current duration-200 ease-in ${dropdownOpen && "rotate-180"}`}
@@ -53,12 +53,12 @@ const DropdownUser = () => {
         <div
           className={`absolute right-0 mt-7.5 flex w-[280px] flex-col rounded-lg border-[0.5px] border-stroke bg-white shadow-default dark:border-dark-3 dark:bg-gray-dark`}
         >
-          <div className="flex items-center gap-2.5 px-5 pb-5.5 pt-3.5">
+          <div className="flex items-center gap-2.5 px-2 pb-5.5 pt-3.5">
             <span className="relative block h-12 w-12 rounded-full">
               <Image
-                width={112}
-                height={112}
-                src="/images/user/user-03.png"
+                width={50}
+                height={50}
+                src="/images/logo/logo-kemenkeu.png"
                 style={{
                   width: "auto",
                   height: "auto",
@@ -72,10 +72,10 @@ const DropdownUser = () => {
 
             <span className="block">
               <span className="block font-medium text-dark dark:text-white">
-                Jhon Smith
+                KANWIL SULUT
               </span>
               <span className="block font-medium text-dark-5 dark:text-dark-6">
-                jonson@nextadmin.com
+              turt.kanwilsulut@gmail.com
               </span>
             </span>
           </div>
