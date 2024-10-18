@@ -14,13 +14,13 @@ interface SlideData {
   imageUrl: string;
 }
 
-const ImageSlider: FC = () => {
+const  ImageSlider: FC = () => {
   const slides: SlideData[] = [
     { id: 1, imageUrl: "/images/product/product-05.png" },
     { id: 2, imageUrl: "/images/product/product-06.png" },
     { id: 3, imageUrl: "/images/product/product-07.png" },
     { id: 4, imageUrl: "/images/product/product-08.png" },
-    { id: 5, imageUrl: "/images/product/product-05.png" },
+    { id: 5, imageUrl: "/images/product/product-09.png" },
   ];
 
   const swiperRef = useRef<SwiperType | null>(null);

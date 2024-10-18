@@ -4,8 +4,8 @@ import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import ButtonDefault from "@/components/Buttons/ButtonDefault";
 
 export const metadata: Metadata = {
-  title: "Next.js Buttons Page | NextAdmin - Next.js Dashboard Kit",
-  description: "This is Next.js Buttons page for NextAdmin Dashboard Kit",
+  title: "Next.js Buttons Page ",
+  description: "This is Next.js Buttons page for BAKUDAPA",
 };
 
 const Buttons = () => {
@@ -337,7 +337,7 @@ const Buttons = () => {
             </ButtonDefault>
 
             <ButtonDefault
-              label="Button With Icon"
+              label="Button lol"
               link="/"
               customClasses="bg-dark rounded-full text-white py-[11px] px-6"
             >
@@ -359,7 +359,7 @@ const Buttons = () => {
             </ButtonDefault>
 
             <ButtonDefault
-              label="Button With Icon"
+              label="Button darkie "
               link="/"
               customClasses="border rounded-full border-primary text-primary py-[11px] px-6"
             >

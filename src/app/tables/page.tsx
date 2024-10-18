@@ -5,6 +5,7 @@ import TableTwo from "@/components/Tables/TableTwo";
 
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
+import TableFour from "@/components/Tables/TableFour";
 
 export const metadata: Metadata = {
   title: "BAKUDAPA JO",
@@ -20,6 +21,8 @@ const TablesPage = () => {
         <TableOne />
         <TableTwo />
         <TableThree />
+        <TableFour />
+        {/* <TableFive /> */}
       </div>
     </DefaultLayout>
   );
