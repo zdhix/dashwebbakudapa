@@ -1,10 +1,15 @@
 import { ApexOptions } from "apexcharts";
-import React from "react";
+import React, { useRef } from "react";
 import ReactApexChart from "react-apexcharts";
 import DefaultSelectOption from "@/components/SelectOption/DefaultSelectOption";
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
+import html2canvas from 'html2canvas';
 
 const ChartThree: React.FC = () => {
-  const series = [65, 34, 12, 56];
+  const chartRef = useRef<HTMLDivElement>(null);
+  const series = [76, 24,];
+  const labels = ["REALISASI_1_REG ", "REALISASI_1_REG ", "REALISASI_1_EARMARK", "REALISASI_1_EARMARK"];
 
   const options: ApexOptions = {
     chart: {
@@ -12,25 +17,24 @@ const ChartThree: React.FC = () => {
       type: "donut",
     },
     colors: ["#5750F1", "#5475E5", "#8099EC", "#ADBCF2"],
-    labels: ["Desktop", "Tablet", "Mobile", "Unknown"],
+    labels: labels,
     legend: {
       show: false,
       position: "bottom",
     },
-
     plotOptions: {
       pie: {
         donut: {
-          size: "80%",
+          size: "50%",
           background: "transparent",
           labels: {
             show: true,
             total: {
               show: true,
               showAlways: true,
-              label: "Visitors",
+              label: "DAU",
               fontSize: "16px",
-              fontWeight: "400",
+              fontWeight: "200",
             },
             value: {
               show: true,
@@ -64,12 +68,40 @@ const ChartThree: React.FC = () => {
     ],
   };
 
+  const handleDownloadExcel = () => {
+    // Create data array for Excel
+    const data = series.map((value, index) => ({
+      Category: labels[index],
+      Value: value,
+      Percentage: `${value}%`
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "DBH Data");
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
+    saveAs(blob, 'dbh-chart-data.xlsx');
+  };
+
+  const handleDownloadChart = async () => {
+    if (!chartRef.current) {
+      console.log("Chart not available to download.");
+      return;
+    }
+
+    const chartElement = chartRef.current;
+    const canvas = await html2canvas(chartElement);
+    const imgData = canvas.toDataURL('image/jpeg');
+    saveAs(imgData, 'dbh-chart.jpeg');
+  };
+
   return (
     <div className="col-span-12 rounded-[10px] bg-white px-7.5 pb-7 pt-7.5 shadow-1 dark:bg-gray-dark dark:shadow-card xl:col-span-5">
       <div className="mb-9 justify-between gap-4 sm:flex">
         <div>
           <h4 className="text-body-2xlg font-bold text-dark dark:text-white">
-            Used Devices
+            Dana Alokasi Umum
           </h4>
         </div>
         <div>
@@ -77,7 +109,7 @@ const ChartThree: React.FC = () => {
         </div>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-8" ref={chartRef}>
         <div className="mx-auto flex justify-center">
           <ReactApexChart options={options} series={series} type="donut" />
         </div>
@@ -89,8 +121,8 @@ const ChartThree: React.FC = () => {
             <div className="flex w-full items-center">
               <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-blue"></span>
               <p className="flex w-full justify-between text-body-sm font-medium text-dark dark:text-dark-6">
-                <span> Desktop </span>
-                <span> 65% </span>
+                <span>PAGU</span>
+                <span> 76% </span>
               </p>
             </div>
           </div>
@@ -98,30 +130,28 @@ const ChartThree: React.FC = () => {
             <div className="flex w-full items-center">
               <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-blue-light"></span>
               <p className="flex w-full justify-between text-body-sm font-medium text-dark dark:text-dark-6">
-                <span> Tablet </span>
-                <span> 34% </span>
-              </p>
-            </div>
-          </div>
-          <div className="w-full px-7.5 sm:w-1/2">
-            <div className="flex w-full items-center">
-              <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-blue-light-2"></span>
-              <p className="flex w-full justify-between text-body-sm font-medium text-dark dark:text-dark-6">
-                <span> Mobile </span>
-                <span> 45% </span>
-              </p>
-            </div>
-          </div>
-          <div className="w-full px-7.5 sm:w-1/2">
-            <div className="flex w-full items-center">
-              <span className="mr-2 block h-3 w-full max-w-3 rounded-full bg-blue-light-3"></span>
-              <p className="flex w-full justify-between text-body-sm font-medium text-dark dark:text-dark-6">
-                <span> Unknown </span>
-                <span> 12% </span>
+                <span>REALISASI</span>
+                <span> 24% </span>
               </p>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Download buttons */}
+      <div className="mt-8 flex justify-end space-x-4 px-7.5">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleDownloadExcel}
+        >
+          Download to Excel
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleDownloadChart}
+        >
+          Download Chart
+        </button>
       </div>
     </div>
   );
