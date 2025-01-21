@@ -1,26 +1,41 @@
 import { ApexOptions } from "apexcharts";
-import React from "react";
+import React, { useRef } from "react";
 import ReactApexChart from "react-apexcharts";
 import DefaultSelectOption from "@/components/SelectOption/DefaultSelectOption";
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
+import html2canvas from 'html2canvas';
 
-const ChartTwo: React.FC = () => {
-  const series = [
-    {
-      name: "Sales",
-      data: [44, 55, 41, 67, 22, 43, 65],
-    },
-    {
-      name: "Revenue",
-      data: [13, 23, 20, 8, 13, 27, 15],
-    },
-  ];
+export interface BarChartProps {
+  title?: string;
+  selectOptions?: string[];
+  series: {
+    name: string;
+    data: number[];
+  }[];
+  categories: string[];
+  colors?: string[];
+  height?: number;
+  className?: string;
+}
+
+const BarChart: React.FC<BarChartProps> = ({
+  title = "Profit this week",
+  selectOptions = ["This Week", "Last Week"],
+  series,
+  categories,
+  colors = ["#5750F1", "#0ABEF9"],
+  height = 335,
+  className = "",
+}) => {
+  const chartRef = useRef<HTMLDivElement>(null);
 
   const options: ApexOptions = {
-    colors: ["#5750F1", "#0ABEF9"],
+    colors,
     chart: {
       fontFamily: "Satoshi, sans-serif",
       type: "bar",
-      height: 335,
+      height: height,
       stacked: true,
       toolbar: {
         show: false,
@@ -71,7 +86,7 @@ const ChartTwo: React.FC = () => {
     },
 
     xaxis: {
-      categories: ["M", "T", "W", "T", "F", "S", "S"],
+      categories,
     },
     legend: {
       position: "top",
@@ -93,31 +108,75 @@ const ChartTwo: React.FC = () => {
     },
   };
 
+  // Function to download the chart as an Excel file
+  const handleDownloadExcel = () => {
+    const data = series[0].data.map((value, index) => ({
+      Day: categories[index] ?? `Day ${index + 1}`,
+      Sales: value,
+      Revenue: series[1]?.data[index] || 0,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Chart Data");
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8' });
+    saveAs(blob, 'chart-data.xlsx');
+  };
+
+  // Function to download the chart as an image
+  const handleDownloadChart = async () => {
+    if (!chartRef.current) {
+      console.log("Chart not available to download.");
+      return;
+    }
+
+    const chartElement = chartRef.current;
+    const canvas = await html2canvas(chartElement);
+    const imgData = canvas.toDataURL('image/jpeg');
+    saveAs(imgData, 'chart-image.jpeg');
+  };
+
   return (
-    <div className="col-span-12 rounded-[10px] bg-white px-7.5 pt-7.5 shadow-1 dark:bg-gray-dark dark:shadow-card xl:col-span-5">
+    <div className={`col-span-12 rounded-[10px] bg-white px-7.5 pt-7.5 shadow-1 dark:bg-gray-dark dark:shadow-card xl:col-span-5 ${className}`}>
       <div className="mb-4 justify-between gap-4 sm:flex">
         <div>
           <h4 className="text-body-2xlg font-bold text-dark dark:text-white">
-            Profit this week
+            {title}
           </h4>
         </div>
         <div>
-          <DefaultSelectOption options={["This Week", "Last Week"]} />
+          <DefaultSelectOption options={selectOptions} />
         </div>
       </div>
 
-      <div>
+      <div ref={chartRef}>
         <div id="chartTwo" className="-ml-3.5">
           <ReactApexChart
             options={options}
             series={series}
             type="bar"
-            height={370}
+            height={height}
           />
         </div>
+      </div>
+
+      <div className="mt-8 flex justify-end space-x-4 px-7.5">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleDownloadExcel}
+        >
+          Download to Excel
+        </button>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          onClick={handleDownloadChart}
+        >
+          Download Chart
+        </button>
       </div>
     </div>
   );
 };
 
-export default ChartTwo;
+export default BarChart;
