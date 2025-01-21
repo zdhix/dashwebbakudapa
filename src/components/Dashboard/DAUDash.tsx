@@ -7,9 +7,9 @@ import ChartOne from "@/components/Charts/ChartOne";
 import ChartFive from "../Charts/ChartFive";
 import TextSection from "../Header/TextSection";
 
-const TKDDash: React.FC = () => {
+const DAUDash: React.FC = () => {
   const chartOneData = {
-    title: "Transfer ke Daerah (TKD)",
+    title: "Dana Alokasi Umum (DAU)",
     series: [
       {
         name: "Received Amount",
@@ -97,4 +97,4 @@ const TKDDash: React.FC = () => {
   );
 };
 
-export default TKDDash;
+export default DAUDash;

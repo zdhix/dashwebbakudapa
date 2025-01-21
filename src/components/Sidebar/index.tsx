@@ -43,9 +43,9 @@ const menuGroups = [
         route: "#",
         children: [
           { label: "Penyaluran TKD", route: "/dashboard/dashTKD" },
-          { label: "Penyaluran DBH", route: "/" },
-          { label: "Penyaluran DAU", route: "/" },
-          { label: "Penyaluran DAK", route: "/" },
+          { label: "Penyaluran DBH", route: "/dashboard/dashDBH" },
+          { label: "Penyaluran DAU", route: "/dashboard/dashDAU" },
+          { label: "Penyaluran DAK", route: "/dashboard/dashDAK" },
         ],
       },
       {
@@ -116,31 +116,7 @@ const menuGroups = [
         ),
         label: "Calendar",
         route: "/calendar",
-      },
-      {
-        icon: (
-          <svg
-            className="fill-current"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M8 21a1 1 0 0 1-1-1v-3H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-6.586l-3.707 3.707A1 1 0 0 1 8 21zM19 5H5v10h3a1 1 0 0 1 1 1v1.586l2.293-2.293A1 1 0 0 1 12 15h7V5z"
-              fill=""
-            />
-          </svg>
-        ),
-        label: "Chats",
-        route: "#",
-        children: [
-          { label: "Messages", route: "/forms/Chat-elements" },
-        ],
-      },
+      }
     ],
   },
   {

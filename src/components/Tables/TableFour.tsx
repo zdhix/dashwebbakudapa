@@ -2,13 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { Package } from "@/types/package";
 
-// You'll need to implement this function to fetch data from Google Sheets
-async function fetchDataFromGoogleSheets(): Promise<Package[]> {
-  // Implement Google Sheets API call here
-  // For now, we'll use the mock data
-  return packageData;
-}
-
 const SearchForm: React.FC<{ onSearch: (term: string) => void }> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -65,9 +58,7 @@ const TableFour: React.FC = () => {
   const [filteredData, setFilteredData] = useState<Package[]>([]);
   const [activeFilter, setActiveFilter] = useState('All');
 
-  useEffect(() => {
-    fetchDataFromGoogleSheets().then(setData);
-  }, []);
+
 
   useEffect(() => {
     setFilteredData(data);

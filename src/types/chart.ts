@@ -45,18 +45,17 @@ export interface AreaChartProps {
   downloadFilePrefix?: string;
 }
 //chart5
-export interface ChartFiveDBHProps {
+export interface ChartFiveProps {
   title?: string;
   subtitle?: string;
   totalValue?: string;
   percentageChange?: number;
-  data: {
+  series: {
     name: string;
-    value: number;
+    data: number[];
   }[];
-  color?: string;
+  categories: string[];
   height?: number;
-  onDownloadExcel?: () => void;
-  onDownloadChart?: () => void;
-  showDownloadButtons?: boolean;
+  colors?: string[];
+  className?: string;
 }
