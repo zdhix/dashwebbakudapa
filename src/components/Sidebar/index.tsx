@@ -69,7 +69,7 @@ const menuGroups = [
         label: "Tables",
         route: "#",
         children: [
-          { label: "Tables", route: "/tables" },
+          { label: "All Data", route: "/tables" },
         ],
       },
       {
